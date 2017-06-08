@@ -32,6 +32,9 @@ sudo ./build.sh
 ```
 sudo ./run.sh
 ```
+To fix X display issue, you need to copy the .Xauthority from your home directory into container's root directory.e.g.  
+`cp /home/user/.Xauthority /.Xauthority`  
+But eventually this should be solved in the docker image.
 
 ## How to create another terminal
 `sudo docker ps` to find out the CONTAINER ID
