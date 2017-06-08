@@ -8,7 +8,6 @@ ARG home
 ARG workspace
 ARG shell
 
-
 RUN apt-get update && apt-get install -y \
         software-properties-common \
         wget curl git cmake cmake-curses-gui \
@@ -47,7 +46,7 @@ RUN apt-get update && apt-get install -y \
         libqt5opengl5-dev libssh2-1-dev libarmadillo-dev libpcap-dev gksu \
 				ros-indigo-grid-map \
 				ros-indigo-velocity-controllers \
-				ros-indigo-gps-common
+				ros-indigo-gps-common 
 
 RUN rosdep init \
         && rosdep update \
@@ -125,13 +124,11 @@ RUN \
 # This is required for sharing Xauthority
 ENV QT_X11_NO_MITSHM=1
 
-# Install some required ROS packages
-RUN apt-get install -y \
-			ros-indigo-grid-map \
-			ros-indigo-velocity-controllers \
-			ros-indigo-gps-common
+COPY ${home}/.Xauthority /.Xauthority
 
 # Install Autoware
 #RUN git clone https://github.com/CPFL/Autoware.git ${home}/Autoware-docker
 #RUN /bin/bash -c 'source /opt/ros/indigo/setup.bash; cd ${home}/Autoware-docker/ros/src; catkin_init_workspace; cd ../; ./catkin_make_release'
 #RUN echo "source ${home}/Autoware-docker/ros/devel/setup.bash" >> ${home}/.bashrc
+
+
