@@ -124,7 +124,8 @@ RUN \
 # This is required for sharing Xauthority
 ENV QT_X11_NO_MITSHM=1
 
-COPY ${home}/.Xauthority /.Xauthority
+# TODO Fix this
+#COPY .Xauthority /.Xauthority
 
 # Install Autoware
 #RUN git clone https://github.com/CPFL/Autoware.git ${home}/Autoware-docker
